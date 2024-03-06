@@ -1,5 +1,6 @@
 package id.android.belajarcomposenewsapps.presentation.onboarding
 
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -30,9 +31,8 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-
 fun OnBoardingScreen(
-
+    event: (OnBoardingEvent) -> Unit
 ){
     Column(modifier = Modifier.fillMaxSize()) {
         val pagerState = rememberPagerState(initialPage = 0) {
@@ -92,7 +92,7 @@ fun OnBoardingScreen(
                     onClick = {
                         scope.launch {
                             if (pagerState.currentPage == 2) {
-//                                onEvent(OnBoardingEvent.SaveAppEntry)
+                                event(OnBoardingEvent.SaveAppEntry)
                             } else {
                                 pagerState.animateScrollToPage(
                                     page = pagerState.currentPage + 1
