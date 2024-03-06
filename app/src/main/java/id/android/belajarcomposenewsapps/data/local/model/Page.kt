@@ -1,4 +1,4 @@
-package id.android.belajarcomposenewsapps.presentation.onboarding
+package id.android.belajarcomposenewsapps.data.local.model
 
 import androidx.annotation.DrawableRes
 import id.android.belajarcomposenewsapps.R

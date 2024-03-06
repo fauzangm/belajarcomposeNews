@@ -1,12 +1,10 @@
 package id.android.belajarcomposenewsapps.presentation.onboarding
 
-import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -21,7 +19,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import coil.size.Dimension
+import id.android.belajarcomposenewsapps.data.local.model.pages
 import id.android.belajarcomposenewsapps.presentation.common.NewsButton
 import id.android.belajarcomposenewsapps.presentation.common.NewsTextButton
 import id.android.belajarcomposenewsapps.presentation.onboarding.components.OnBoardingPage

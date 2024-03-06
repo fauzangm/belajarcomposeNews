@@ -18,11 +18,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.util.packFloats
 import id.android.belajarcomposenewsapps.R
-import id.android.belajarcomposenewsapps.presentation.onboarding.Page
+import id.android.belajarcomposenewsapps.data.local.model.Page
 import id.android.belajarcomposenewsapps.ui.theme.BelajarcomposenewsappsTheme
 import id.android.belajarcomposenewsapps.utils.Dimens
 
