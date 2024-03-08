@@ -20,4 +20,11 @@ object Dimens {
 
     val titleText = 32.sp
     val bigTittleText = 48.sp
+
+    val ArticleCardSize = 96.dp
+    val ExtraSmallPadding = 3.dp
+    val ExtraSmallPadding2 = 6.dp
+
+    val SmallIconSize = 11.dp
+    val IconSize = 20.dp
 }

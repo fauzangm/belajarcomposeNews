@@ -9,6 +9,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
+import androidx.paging.compose.collectAsLazyPagingItems
+import id.android.belajarcomposenewsapps.presentation.home.HomeScreen
+import id.android.belajarcomposenewsapps.presentation.home.HomeViewModel
 import id.android.belajarcomposenewsapps.presentation.onboarding.OnBoardingScreen
 import id.android.belajarcomposenewsapps.presentation.onboarding.OnBoardingViewModel
 
@@ -36,7 +39,9 @@ fun NavGraph(
             composable(
                 route = Route.NewsNavigatorScreen.route
             ){
-                Text(text = "News Navigator Screen", color = Color.White)
+                val viewModel : HomeViewModel = hiltViewModel()
+                val articles = viewModel.news.collectAsLazyPagingItems()
+                HomeScreen(articles = articles, navigate = {} )
             }
         }
     }
