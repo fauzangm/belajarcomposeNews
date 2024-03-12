@@ -48,6 +48,7 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigate: (String) -> Unit) {
         modifier = Modifier
             .fillMaxSize()
             .padding(top = Dimens.MediumPadding1)
+            .padding(horizontal = 16.dp)
             .statusBarsPadding()
     ) {
         Image(
@@ -66,7 +67,7 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigate: (String) -> Unit) {
             readOnly = true,
             onValueChange = {},
             onClick = { navigate(Route.SearchScreen.route) },
-            onSearch = {}
+            onSearch = {},
         )
         Spacer(modifier = Modifier.height(Dimens.MediumPadding1))
 

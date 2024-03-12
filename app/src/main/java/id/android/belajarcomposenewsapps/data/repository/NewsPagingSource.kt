@@ -1,8 +1,9 @@
-package id.android.belajarcomposenewsapps.data.remote
+package id.android.belajarcomposenewsapps.data.repository
 
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import id.android.belajarcomposenewsapps.data.remote.ApiService
 import id.android.belajarcomposenewsapps.domain.model.Article
 
 class NewsPagingSource(
@@ -23,7 +24,7 @@ class NewsPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
         val page = params.key ?: 1
         return try {
-            val newsResponse = apiService.getNews(page = page, source = "bitcoin" , from = "2024-03-06", sortBy = "publishedAt")
+            val newsResponse = apiService.getNews(page = page, source = sources , from = "2024-03-06", sortBy = "publishedAt")
             totalNewsCount += newsResponse.articles.size
             Log.e("error network","cek = ${newsResponse.status}")
             val articles = newsResponse.articles.distinctBy { it.title } //Remove duplicates

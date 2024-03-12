@@ -14,14 +14,16 @@ import id.android.belajarcomposenewsapps.presentation.home.HomeScreen
 import id.android.belajarcomposenewsapps.presentation.home.HomeViewModel
 import id.android.belajarcomposenewsapps.presentation.onboarding.OnBoardingScreen
 import id.android.belajarcomposenewsapps.presentation.onboarding.OnBoardingViewModel
+import id.android.belajarcomposenewsapps.presentation.search.SearchScreen
+import id.android.belajarcomposenewsapps.presentation.search.SearchViewModel
 
 @Composable
 fun NavGraph(
-    startDestination : String
+    startDestination: String
 ) {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = startDestination ){
+    NavHost(navController = navController, startDestination = startDestination) {
         navigation(
             route = Route.AppStartNavigation.route,
             startDestination = Route.OnBoardingScreen.route
@@ -35,13 +37,28 @@ fun NavGraph(
         navigation(
             route = Route.NewsNavigation.route,
             startDestination = Route.NewsNavigatorScreen.route
-        ){
+        ) {
             composable(
                 route = Route.NewsNavigatorScreen.route
-            ){
-                val viewModel : HomeViewModel = hiltViewModel()
+            ) {
+                val viewModel: HomeViewModel = hiltViewModel()
                 val articles = viewModel.news.collectAsLazyPagingItems()
-                HomeScreen(articles = articles, navigate = {} )
+                HomeScreen(articles = articles, navigate = {})
+            }
+        }
+
+        navigation(
+            route = Route.NewsNavigation.route,
+            startDestination = Route.NewsNavigatorScreen.route
+        ) {
+            composable(
+                route = Route.NewsNavigatorScreen.route
+            ) {
+                val viewModel: SearchViewModel = hiltViewModel()
+                SearchScreen(
+                    state = viewModel.state.value,
+                    event = viewModel::onEvent,
+                    navigate = {})
             }
         }
     }
