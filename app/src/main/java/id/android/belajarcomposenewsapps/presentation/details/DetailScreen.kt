@@ -2,6 +2,7 @@ package id.android.belajarcomposenewsapps.presentation.details
 
 import android.content.Intent
 import android.net.Uri
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -12,6 +13,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -38,6 +40,18 @@ fun DetailScreen(
     navigateUp: () -> Unit
 ) {
     val context = LocalContext.current
+
+    LaunchedEffect(key1 = sideEffect) {
+        sideEffect?.let {
+            when(sideEffect){
+                is UIComponent.Toast ->{
+                    Toast.makeText(context, sideEffect.message, Toast.LENGTH_SHORT).show()
+                    event(DetailEvents.RemoveSideEffect)
+                }
+                else -> Unit
+            }
+        }
+    }
 
     Column(
         modifier = Modifier

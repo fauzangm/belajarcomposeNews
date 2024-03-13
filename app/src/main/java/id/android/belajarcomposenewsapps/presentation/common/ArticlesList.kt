@@ -23,7 +23,7 @@ fun ArticlesList(
     onClick: (Article) -> Unit
 ) {
     if (articles.isEmpty()){
-        Text(text = "not found")
+        EmptyScreen()
     }
     LazyColumn(
         modifier = modifier.fillMaxSize(),

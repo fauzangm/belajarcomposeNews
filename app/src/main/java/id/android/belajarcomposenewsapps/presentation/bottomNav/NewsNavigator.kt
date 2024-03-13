@@ -62,27 +62,37 @@ fun NewsNavigator(
         Route.BookMarkScreen.route -> 2
         else -> 0
     }
+
+    //Hide the bottom navigation when the user is in the details screen
+    val isBottomBarVisible = remember(key1 = backstackState) {
+        backstackState?.destination?.route == Route.HomeScreen.route ||
+                backstackState?.destination?.route == Route.SearchScreen.route ||
+                backstackState?.destination?.route == Route.BookMarkScreen.route
+    }
     Scaffold(
         modifier = Modifier.fillMaxWidth(),
         bottomBar = {
-            NewsBottomNav(items = bottomNavItem, selected = selectedItem, onItemClick = { index ->
-                when (index) {
-                    0 -> navigateToTab(
-                        navController = navController,
-                        route = Route.HomeScreen.route
-                    )
+            if (isBottomBarVisible){
+                NewsBottomNav(items = bottomNavItem, selected = selectedItem, onItemClick = { index ->
+                    when (index) {
+                        0 -> navigateToTab(
+                            navController = navController,
+                            route = Route.HomeScreen.route
+                        )
 
-                    1 -> navigateToTab(
-                        navController = navController,
-                        route = Route.SearchScreen.route
-                    )
+                        1 -> navigateToTab(
+                            navController = navController,
+                            route = Route.SearchScreen.route
+                        )
 
-                    2 -> navigateToTab(
-                        navController = navController,
-                        route = Route.BookMarkScreen.route
-                    )
-                }
-            })
+                        2 -> navigateToTab(
+                            navController = navController,
+                            route = Route.BookMarkScreen.route
+                        )
+                    }
+                })
+            }
+
         }
     ) {
         val bottomPadding = it.calculateBottomPadding()
