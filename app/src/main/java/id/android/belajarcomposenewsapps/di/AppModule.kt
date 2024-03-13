@@ -22,7 +22,12 @@ import id.android.belajarcomposenewsapps.domain.usecase.app_entry.ReadAppEntry
 import id.android.belajarcomposenewsapps.domain.usecase.app_entry.SaveAppEntry
 import id.android.belajarcomposenewsapps.domain.usecase.news.GetNews
 import id.android.belajarcomposenewsapps.domain.usecase.news.NewsUseCases
+import id.android.belajarcomposenewsapps.domain.usecase.news.dbNews.DeleteArticle
+import id.android.belajarcomposenewsapps.domain.usecase.news.dbNews.GetArticles
+import id.android.belajarcomposenewsapps.domain.usecase.news.dbNews.SelectArticle
+import id.android.belajarcomposenewsapps.domain.usecase.news.dbNews.UpsertArticle
 import id.android.belajarcomposenewsapps.utils.Constans.BASE_URL
+import id.android.belajarcomposenewsapps.utils.Constans.DB_NAME_NEWS
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,6 +40,7 @@ object AppModule {
     private const val CONNECT_TIMEOUT: Long = 30
     private const val READ_TIMEOUT: Long = 30
     private const val WRITE_TIMEOUT: Long = 30
+
     @Provides
     @Singleton
     fun provideLocalUserPref(
@@ -56,8 +62,8 @@ object AppModule {
     @Provides
     @Singleton
     fun provideApiInstance(): ApiService {
-        val apiService : ApiService
-        val client =  OkHttpClient.Builder()
+        val apiService: ApiService
+        val client = OkHttpClient.Builder()
         val tokenProvider = AccessTokenProvider("19a84b51d49a4fb39e93a10f58a13295")
         client
             .authenticator(AccessTokenAuthenticator(tokenProvider))
@@ -86,7 +92,7 @@ object AppModule {
         apiService: ApiService,
         newsDao: NewsDao
     ): NewsRepository {
-        return NewsReposiotryImpl(apiService,newsDao)
+        return NewsReposiotryImpl(apiService, newsDao)
     }
 
     @Provides
@@ -98,10 +104,10 @@ object AppModule {
         return NewsUseCases(
             getNews = GetNews(newsRepository),
 //            searchNews = SearchNews(newsRepository),
-//            upsertArticle = UpsertArticle(newsDao),
-//            deleteArticle = DeleteArticle(newsDao),
-//            getArticles = GetArticles(newsDao),
-//            getArticle = GetArticle(newsDao)
+            upsertArticle = UpsertArticle(newsDao),
+            deleteArticle = DeleteArticle(newsDao),
+            selectArticle = SelectArticle(newsDao),
+            getArticle = GetArticles(newsDao)
         )
     }
 
@@ -115,7 +121,7 @@ object AppModule {
         return Room.databaseBuilder(
             context = application,
             klass = NewsDatabase::class.java,
-            name = "news_db"
+            name = DB_NAME_NEWS
         ).addTypeConverter(NewsTypeConvertor())
             .fallbackToDestructiveMigration()
             .build()

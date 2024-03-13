@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.collectAsLazyPagingItems
+import id.android.belajarcomposenewsapps.domain.model.Article
 import id.android.belajarcomposenewsapps.presentation.common.ArticlesList
 import id.android.belajarcomposenewsapps.presentation.common.SearchBar
 import id.android.belajarcomposenewsapps.utils.Dimens
@@ -18,7 +19,7 @@ import id.android.belajarcomposenewsapps.utils.Dimens
 fun SearchScreen(
     state: SearchState,
     event: (SearchEvent) -> Unit,
-    navigate: (String) -> Unit
+    navigateToDetails: (Article) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -40,7 +41,7 @@ fun SearchScreen(
 
         state.articles?.let { 
             val articles = it.collectAsLazyPagingItems()
-            ArticlesList(articles = articles, onClick = {} )
+            ArticlesList(articles = articles, onClick = {navigateToDetails(it)} )
         }
 
     }

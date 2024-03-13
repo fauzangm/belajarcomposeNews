@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
@@ -28,12 +27,14 @@ import id.android.belajarcomposenewsapps.domain.model.Source
 import id.android.belajarcomposenewsapps.presentation.details.components.DetailTopBar
 import id.android.belajarcomposenewsapps.ui.theme.BelajarcomposenewsappsTheme
 import id.android.belajarcomposenewsapps.utils.Dimens
+import id.android.belajarcomposenewsapps.utils.UIComponent
 
 
 @Composable
 fun DetailScreen(
     article: Article,
-    events: (DetailEvents) -> Unit,
+    event: (DetailEvents) -> Unit,
+    sideEffect: UIComponent?,
     navigateUp: () -> Unit
 ) {
     val context = LocalContext.current
@@ -61,7 +62,9 @@ fun DetailScreen(
                     }
                 }
             },
-            onBookmarkClick = { events(DetailEvents.SaveArticle) },
+            onBookmarkClick = {
+                event(DetailEvents.UpsertDeleteArticle(article))
+            },
             onBackClick = navigateUp
 
         )
@@ -107,7 +110,7 @@ fun DetailScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun DetailScreenPreview(){
+fun DetailScreenPreview() {
     BelajarcomposenewsappsTheme(dynamicColor = false) {
         DetailScreen(article = Article(
             author = "",
@@ -121,7 +124,9 @@ fun DetailScreenPreview(){
             ),
             url = "",
             urlToImage = ""
-        ) , events ={} ) {
+        ),        event = {},
+            sideEffect = null
+        ) {
 
         }
     }
