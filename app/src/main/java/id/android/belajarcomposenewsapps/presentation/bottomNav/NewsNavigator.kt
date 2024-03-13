@@ -28,6 +28,7 @@ import id.android.belajarcomposenewsapps.presentation.details.DetailScreen
 import id.android.belajarcomposenewsapps.presentation.details.DetailViewModel
 import id.android.belajarcomposenewsapps.presentation.home.HomeScreen
 import id.android.belajarcomposenewsapps.presentation.home.HomeViewModel
+import id.android.belajarcomposenewsapps.presentation.leartwomain.L2onBoarding.OnboardingScreen
 import id.android.belajarcomposenewsapps.presentation.navigation.Route
 import id.android.belajarcomposenewsapps.presentation.search.SearchScreen
 import id.android.belajarcomposenewsapps.presentation.search.SearchViewModel
@@ -72,25 +73,28 @@ fun NewsNavigator(
     Scaffold(
         modifier = Modifier.fillMaxWidth(),
         bottomBar = {
-            if (isBottomBarVisible){
-                NewsBottomNav(items = bottomNavItem, selected = selectedItem, onItemClick = { index ->
-                    when (index) {
-                        0 -> navigateToTab(
-                            navController = navController,
-                            route = Route.HomeScreen.route
-                        )
+            if (isBottomBarVisible) {
+                NewsBottomNav(
+                    items = bottomNavItem,
+                    selected = selectedItem,
+                    onItemClick = { index ->
+                        when (index) {
+                            0 -> navigateToTab(
+                                navController = navController,
+                                route = Route.HomeScreen.route
+                            )
 
-                        1 -> navigateToTab(
-                            navController = navController,
-                            route = Route.SearchScreen.route
-                        )
+                            1 -> navigateToTab(
+                                navController = navController,
+                                route = Route.SearchScreen.route
+                            )
 
-                        2 -> navigateToTab(
-                            navController = navController,
-                            route = Route.BookMarkScreen.route
-                        )
-                    }
-                })
+                            2 -> navigateToTab(
+                                navController = navController,
+                                route = Route.BookMarkScreen.route
+                            )
+                        }
+                    })
             }
 
         }
@@ -116,6 +120,11 @@ fun NewsNavigator(
                         navigateToDetails(
                             navController = navController,
                             article = article
+                        )
+                    },
+                    navigateToLearnTwoMain = {
+                        navigateToLearnTwoMain(
+                            navController
                         )
                     }
                 )
@@ -163,6 +172,12 @@ fun NewsNavigator(
                 )
             }
 
+            composable(route = Route.LearnTwoMain.route) {
+                OnboardingScreen(
+                    navigateUp = { navController.navigateUp() },
+                )
+            }
+
 
         }
     }
@@ -194,5 +209,11 @@ private fun navigateToDetails(navController: NavController, article: Article) {
     navController.currentBackStackEntry?.savedStateHandle?.set("article", article)
     navController.navigate(
         route = Route.DetailsScreen.route
+    )
+}
+
+private fun navigateToLearnTwoMain(navController: NavController) {
+    navController.navigate(
+        route = Route.LearnTwoMain.route
     )
 }

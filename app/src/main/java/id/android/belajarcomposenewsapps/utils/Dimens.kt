@@ -9,6 +9,7 @@ object Dimens {
     val defaultPadding = 16.dp
 
     val RoundedButton =  8.dp
+    val XlRoundedButton =  16.dp
 
     val IndicatorSize = 14.dp
 

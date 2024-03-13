@@ -7,4 +7,7 @@
     <color name="input_background">#fff</color>
     <color name="placeholder">#A0A3BD</color>
     <color name="shimmer">#C3C3C3</color>
+
+    <color name="color_primary">#03BF8C</color>
+    <color name="color_primary_brown">#BE895B</color>
 </resources>
