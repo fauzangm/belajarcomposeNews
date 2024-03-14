@@ -51,7 +51,8 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnboardingScreen(
-    navigateUp: () -> Unit
+    navigateUp: () -> Unit,
+    authScreen : () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -77,7 +78,7 @@ fun OnboardingScreen(
 
             }
 
-            PrimaryOutlineButton(text = "Lewati", onClick = {})
+            PrimaryOutlineButton(text = "Lewati", onClick = authScreen)
 
         }
         HorizontalPager(
@@ -155,7 +156,9 @@ fun OnboardingScreen(
 @Composable
 fun OnboardingScreePreview() {
     BelajarcomposenewsappsTheme {
-        OnboardingScreen {
+        OnboardingScreen (
+            navigateUp = {}
+        ){
 
         }
     }

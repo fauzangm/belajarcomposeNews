@@ -26,6 +26,7 @@ import id.android.belajarcomposenewsapps.presentation.details.DetailScreen
 import id.android.belajarcomposenewsapps.presentation.details.DetailViewModel
 import id.android.belajarcomposenewsapps.presentation.home.HomeScreen
 import id.android.belajarcomposenewsapps.presentation.home.HomeViewModel
+import id.android.belajarcomposenewsapps.presentation.leartwomain.auth.AuthScreen
 import id.android.belajarcomposenewsapps.presentation.leartwomain.onBoarding.OnboardingScreen
 import id.android.belajarcomposenewsapps.presentation.navigation.bottomNav.BottomNavItem
 import id.android.belajarcomposenewsapps.presentation.navigation.bottomNav.NewsBottomNav
@@ -174,7 +175,14 @@ fun NewsNavigator(
             composable(route = Route.LearnTwoMain.route) {
                 OnboardingScreen(
                     navigateUp = { navController.navigateUp() },
+                    authScreen = {
+                        navigateAuthScreen(navController)
+                    }
                 )
+            }
+
+            composable(route = Route.AuthScreen.route) {
+                AuthScreen()
             }
 
 
@@ -214,5 +222,11 @@ private fun navigateToDetails(navController: NavController, article: Article) {
 private fun navigateToLearnTwoMain(navController: NavController) {
     navController.navigate(
         route = Route.LearnTwoMain.route
+    )
+}
+
+private fun navigateAuthScreen(navController: NavController) {
+    navController.navigate(
+        route = Route.AuthScreen.route
     )
 }

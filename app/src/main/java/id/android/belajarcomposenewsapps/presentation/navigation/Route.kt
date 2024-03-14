@@ -13,4 +13,5 @@ sealed class Route(
     object NewsNavigatorScreen : Route(route = "newsNavigator")
 
     object LearnTwoMain : Route(route = "learnTwoMain")
+    object AuthScreen : Route(route = "authScreen")
 }
