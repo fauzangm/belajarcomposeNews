@@ -3,6 +3,7 @@ package id.android.belajarcomposenewsapps.presentation.common
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -45,7 +46,8 @@ fun NewsButton(
 @Composable
 fun PrimaryOutlineButton(
     text: String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     OutlinedButton(
         onClick = onClick,
@@ -53,11 +55,35 @@ fun PrimaryOutlineButton(
             width = 2.dp,
             color = colorResource(id = R.color.color_primary)
         ),
-        shape = RoundedCornerShape(size = Dimens.XlRoundedButton)
+        shape = RoundedCornerShape(size = Dimens.XlRoundedButton),
+        modifier = modifier
     ) {
         Text(
             text = text,
             color = colorResource(id = R.color.color_primary),
+            fontWeight = FontWeight.SemiBold
+        )
+    }
+}
+
+@Composable
+fun PrimaryButton(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Button(
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = colorResource(id = R.color.color_primary),
+            contentColor = Color.White
+        ),
+        shape = RoundedCornerShape(size = Dimens.XlRoundedButton),
+        modifier = modifier
+    ) {
+        Text(
+            text = text,
+            color = Color.White,
             fontWeight = FontWeight.SemiBold
         )
     }

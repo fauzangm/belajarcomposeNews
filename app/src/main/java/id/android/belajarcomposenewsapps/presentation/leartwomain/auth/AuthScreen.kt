@@ -1,18 +1,22 @@
 package id.android.belajarcomposenewsapps.presentation.leartwomain.auth
 
+import android.widget.ScrollView
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
@@ -40,6 +44,9 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import id.android.belajarcomposenewsapps.R
+import id.android.belajarcomposenewsapps.presentation.common.PrimaryButton
+import id.android.belajarcomposenewsapps.presentation.common.PrimaryOutlineButton
+import id.android.belajarcomposenewsapps.utils.Dimens
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -52,12 +59,13 @@ fun AuthScreen() {
             contentScale = ContentScale.FillBounds,
             modifier = Modifier.matchParentSize()
         )
-
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
-                .padding(vertical = 32.dp, horizontal = 32.dp)
+                .verticalScroll(rememberScrollState())
+                .padding(vertical = 32.dp, horizontal = 32.dp),
+
 
         ) {
 
@@ -85,15 +93,15 @@ fun AuthScreen() {
                     email = it
                 },
                 modifier = Modifier
-                    .padding(16.dp)
+                    .padding(vertical = 16.dp)
                     .fillMaxWidth(),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = Color.White,
-                    unfocusedBorderColor =  Color.White,
-                    focusedTextColor =  Color.White,
-                    unfocusedTextColor =  Color.White,
-                    focusedLabelColor =  Color.White,
-                    unfocusedLabelColor =  Color.White,
+                    unfocusedBorderColor = Color.White,
+                    focusedTextColor = Color.White,
+                    unfocusedTextColor = Color.White,
+                    focusedLabelColor = Color.White,
+                    unfocusedLabelColor = Color.White,
                 )
             )
 
@@ -108,15 +116,15 @@ fun AuthScreen() {
                 },
                 visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                 modifier = Modifier
-                    .padding(16.dp)
+                    .padding(vertical = 16.dp)
                     .fillMaxWidth(),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = Color.White,
-                    unfocusedBorderColor =  Color.White,
-                    focusedTextColor =  Color.White,
-                    unfocusedTextColor =  Color.White,
-                    focusedLabelColor =  Color.White,
-                    unfocusedLabelColor =  Color.White,
+                    unfocusedBorderColor = Color.White,
+                    focusedTextColor = Color.White,
+                    unfocusedTextColor = Color.White,
+                    focusedLabelColor = Color.White,
+                    unfocusedLabelColor = Color.White,
                 ),
                 trailingIcon = {
                     val image = if (passwordVisible)
@@ -126,12 +134,27 @@ fun AuthScreen() {
                     // Please provide localized description for accessibility services
                     val description = if (passwordVisible) "Hide password" else "Show password"
 
-                    IconButton(onClick = {passwordVisible = !passwordVisible}){
-                        Icon(imageVector  = image, description)
+                    IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                        Icon(imageVector = image, description)
                     }
                 }
             )
-
+            Spacer(modifier = Modifier.height(Dimens.MediumPadding1))
+            PrimaryButton(
+                text = "Login",
+                onClick = {},
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp)
+            )
+            Spacer(modifier = Modifier.height(Dimens.MediumPadding1))
+            PrimaryOutlineButton(
+                text = "Login dengan google",
+                onClick = {},
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp)
+                )
 
         }
 
