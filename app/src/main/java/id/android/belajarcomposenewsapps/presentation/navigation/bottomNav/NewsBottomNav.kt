@@ -1,4 +1,4 @@
-package id.android.belajarcomposenewsapps.presentation.bottomNav.component
+package id.android.belajarcomposenewsapps.presentation.navigation.bottomNav
 
 import android.content.res.Configuration
 import androidx.annotation.DrawableRes

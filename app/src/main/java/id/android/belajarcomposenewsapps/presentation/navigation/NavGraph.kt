@@ -1,23 +1,13 @@
 package id.android.belajarcomposenewsapps.presentation.navigation
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavGraph
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
-import androidx.paging.compose.collectAsLazyPagingItems
-import id.android.belajarcomposenewsapps.presentation.bookmark.BookMarkScreen
-import id.android.belajarcomposenewsapps.presentation.bookmark.BookMarkViewModel
-import id.android.belajarcomposenewsapps.presentation.bottomNav.NewsNavigator
-import id.android.belajarcomposenewsapps.presentation.home.HomeViewModel
 import id.android.belajarcomposenewsapps.presentation.onboarding.OnBoardingScreen
 import id.android.belajarcomposenewsapps.presentation.onboarding.OnBoardingViewModel
-import id.android.belajarcomposenewsapps.presentation.search.SearchScreen
-import id.android.belajarcomposenewsapps.presentation.search.SearchViewModel
 
 @Composable
 fun NavGraph(

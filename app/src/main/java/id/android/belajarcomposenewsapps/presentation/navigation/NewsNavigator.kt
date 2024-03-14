@@ -1,4 +1,4 @@
-package id.android.belajarcomposenewsapps.presentation.bottomNav
+package id.android.belajarcomposenewsapps.presentation.navigation
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,14 +22,13 @@ import id.android.belajarcomposenewsapps.R
 import id.android.belajarcomposenewsapps.domain.model.Article
 import id.android.belajarcomposenewsapps.presentation.bookmark.BookMarkScreen
 import id.android.belajarcomposenewsapps.presentation.bookmark.BookMarkViewModel
-import id.android.belajarcomposenewsapps.presentation.bottomNav.component.BottomNavItem
-import id.android.belajarcomposenewsapps.presentation.bottomNav.component.NewsBottomNav
 import id.android.belajarcomposenewsapps.presentation.details.DetailScreen
 import id.android.belajarcomposenewsapps.presentation.details.DetailViewModel
 import id.android.belajarcomposenewsapps.presentation.home.HomeScreen
 import id.android.belajarcomposenewsapps.presentation.home.HomeViewModel
 import id.android.belajarcomposenewsapps.presentation.leartwomain.onBoarding.OnboardingScreen
-import id.android.belajarcomposenewsapps.presentation.navigation.Route
+import id.android.belajarcomposenewsapps.presentation.navigation.bottomNav.BottomNavItem
+import id.android.belajarcomposenewsapps.presentation.navigation.bottomNav.NewsBottomNav
 import id.android.belajarcomposenewsapps.presentation.search.SearchScreen
 import id.android.belajarcomposenewsapps.presentation.search.SearchViewModel
 
