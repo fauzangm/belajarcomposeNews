@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import id.android.belajarcomposenewsapps.utils.Dimens
@@ -21,10 +22,9 @@ import id.android.belajarcomposenewsapps.utils.Dimens
 
 @Composable
 fun ImageWithDefault(
-    url: String?,
+    url: Int?,
     modifier: Modifier = Modifier,
-    height: Dp,
-    defaultColor: Color = Color.LightGray
+
 ) {
     val context = LocalContext.current
 
@@ -32,34 +32,12 @@ fun ImageWithDefault(
         AsyncImage(
             contentDescription = null,
             model = ImageRequest.Builder(context).data(url).build(),
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(height = height)
-                .background(defaultColor)
-                .clip(
-                    RoundedCornerShape(
-                        Dimens.XlRoundedButton,
-                        Dimens.XlRoundedButton,
-                        Dimens.XlRoundedButton,
-                        Dimens.XlRoundedButton,
-                    )
-                )
+            modifier = modifier,
+            contentScale = ContentScale.Crop
         )
     } else {
         Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(height = height)
-                .background(defaultColor)
-                .clip(
-                    RoundedCornerShape(
-                        Dimens.XlRoundedButton,
-                        Dimens.XlRoundedButton,
-                        Dimens.XlRoundedButton,
-                        Dimens.XlRoundedButton,
-                    )
-                )
-
+            modifier = modifier
         )
     }
 }

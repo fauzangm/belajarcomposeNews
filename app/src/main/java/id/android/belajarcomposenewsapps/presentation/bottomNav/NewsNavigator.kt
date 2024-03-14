@@ -28,7 +28,7 @@ import id.android.belajarcomposenewsapps.presentation.details.DetailScreen
 import id.android.belajarcomposenewsapps.presentation.details.DetailViewModel
 import id.android.belajarcomposenewsapps.presentation.home.HomeScreen
 import id.android.belajarcomposenewsapps.presentation.home.HomeViewModel
-import id.android.belajarcomposenewsapps.presentation.leartwomain.L2onBoarding.OnboardingScreen
+import id.android.belajarcomposenewsapps.presentation.leartwomain.onBoarding.OnboardingScreen
 import id.android.belajarcomposenewsapps.presentation.navigation.Route
 import id.android.belajarcomposenewsapps.presentation.search.SearchScreen
 import id.android.belajarcomposenewsapps.presentation.search.SearchViewModel
