@@ -27,6 +27,7 @@ import id.android.belajarcomposenewsapps.presentation.details.DetailViewModel
 import id.android.belajarcomposenewsapps.presentation.home.HomeScreen
 import id.android.belajarcomposenewsapps.presentation.home.HomeViewModel
 import id.android.belajarcomposenewsapps.presentation.leartwomain.auth.AuthScreen
+import id.android.belajarcomposenewsapps.presentation.leartwomain.auth.AuthViewModel
 import id.android.belajarcomposenewsapps.presentation.leartwomain.onBoarding.OnboardingScreen
 import id.android.belajarcomposenewsapps.presentation.navigation.bottomNav.BottomNavItem
 import id.android.belajarcomposenewsapps.presentation.navigation.bottomNav.NewsBottomNav
@@ -182,7 +183,10 @@ fun NewsNavigator(
             }
 
             composable(route = Route.AuthScreen.route) {
-                AuthScreen()
+                val viewModel: AuthViewModel = hiltViewModel()
+                AuthScreen(
+                    event = viewModel
+                )
             }
 
 

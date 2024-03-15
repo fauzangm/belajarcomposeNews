@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">belajarcomposenewsapps</string>
+    <string name="error_messange">Terjadi Kesalahan</string>
 </resources>
